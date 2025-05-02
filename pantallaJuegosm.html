@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIRESGAMES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Questrial&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="pantallaJuegosm.css" />
+</head>
+<body>
+  <div class="pantalla-juegos">
+    <header class="header">
+      <h1 class="titulo">CIRESGAMES</h1>
+      <h2 class="subtitulo">Dr. Dario</h2>
+    </header>
+
+    <div class="botones-actividades">
+      <div class="actividades-container1">
+        <div class="actividad-btn-container">
+          <button class="actividad-btn" onclick="playButtonSound()">
+            <video class="btn-video-preview" autoplay loop muted playsinline>
+              <source src="assets/Videos/bongoCat.mp4" type="video/mp4">
+            </video>
+            <span class="btn-texto">Actividad 1</span>
+          </button>
+        </div>
+        <div class="actividad-btn-container">
+          <button class="actividad-btn" onclick="playButtonSound()">
+            <video class="btn-video-preview" autoplay loop muted playsinline>
+              <source src="assets/Videos/bongoCat.mp4" type="video/mp4">
+            </video>
+            <span class="btn-texto">Actividad 2</span>
+          </button>
+        </div>
+        <div class="actividad-btn-container">
+          <button class="actividad-btn" onclick="playButtonSound()">
+            <video class="btn-video-preview" autoplay loop muted playsinline>
+              <source src="assets/Videos/bongoCat.mp4" type="video/mp4">
+            </video>
+            <span class="btn-texto">Actividad 3</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="actividades-container2">
+        <div class="actividad-btn-container">
+          <button class="actividad-btn" onclick="playButtonSound()">
+            <video class="btn-video-preview" autoplay loop muted playsinline>
+              <source src="assets/Videos/bongoCat.mp4" type="video/mp4">
+            </video>
+            <span class="btn-texto">Actividad 4</span>
+          </button>
+        </div>
+        <div class="actividad-btn-container">
+          <button class="actividad-btn" onclick="playButtonSound()">
+            <video class="btn-video-preview" autoplay loop muted playsinline>
+              <source src="assets/Videos/bongoCat.mp4" type="video/mp4">
+            </video>
+            <span class="btn-texto">Actividad 5</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú desplegable añadido -->
+    <div id="menu" class="menu-desplegable">
+      <h3>Opciones</h3>
+      <button class="opcion-btn" onclick="playButtonSound()">Iniciar</button>
+      <button class="opcion-btn" onclick="playButtonSound()">Ranking</button>
+    </div>
+
+    <div class="boton-regreso-container">
+      <button class="boton-regresar" onclick="handleGoBack()">Regresar</button>
+    </div>
+
+    <!-- Contenedor de iconos añadido -->
+    <div class="contenedor-iconos">
+      <a href="https://www.uv.mx/" target="_blank" class="icono-uv" rel="noreferrer"></a>
+      <div class="icono-sonido sonido-activado" id="iconoSonido"></div>
+      <div class="icono-volver" id="icono-volver"></div>
+    </div>
+  </div>
+
+  <script>
+    // Función para reproducir sonido de botón
+    function playButtonSound() {
+      const audio = new Audio('assets/Botones/boton.mp3');
+      audio.play().catch(error => {
+        console.error("Error al reproducir el sonido:", error);
+      });
+    }
+
+    // Función para manejar el regreso
+    function handleGoBack() {
+      playButtonSound();
+      history.back();
+    }
+
+    // Mostrar el menú al hacer clic en un botón de actividad
+    document.querySelectorAll('.actividad-btn').forEach((button) => {
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const menu = document.getElementById('menu');
+        const rect = button.getBoundingClientRect();
+        
+        menu.style.top = `${rect.top + window.scrollY - menu.offsetHeight - 5}px`;
+        menu.style.left = `${rect.left + window.scrollX}px`;
+        menu.classList.toggle('mostrar');
+      });
+    });
+
+    // Cerrar el menú si se hace clic fuera de él
+    document.addEventListener('click', function() {
+      const menu = document.getElementById('menu');
+      if (menu.classList.contains('mostrar')) {
+        menu.classList.remove('mostrar');
+      }
+    });
+
+    // Control del icono de sonido
+    document.getElementById('iconoSonido').addEventListener('click', function() {
+      playButtonSound();
+      this.classList.toggle('sonido-activado');
+      this.classList.toggle('sonido-desactivado');
+    });
+
+    // Función para el icono de volver
+    document.getElementById('icono-volver').addEventListener('click', function() {
+      playButtonSound();
+      window.location.href = "pantallaInicio.html";
+    });
+
+    // Recuperar nombre de usuario si existe
+    const nombreGuardado = localStorage.getItem('nombreUsuario');
+    if (nombreGuardado) {
+      document.querySelector('.subtitulo').textContent = nombreGuardado;
+    }
+  </script>
+</body>
+</html>

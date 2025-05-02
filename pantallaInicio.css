@@ -1,0 +1,168 @@
+body {
+    color: black;
+    font-family: "Questrial", sans-serif;
+    background-color: #28AD56;
+    background-image: linear-gradient(
+        80deg,
+        #18529D 25%,
+        transparent 25%,
+        transparent 75%,
+        #18529D 75%,
+        #18529D
+      ),
+      linear-gradient(
+        -20deg,
+        #18529D 25%,
+        transparent 25%,
+        transparent 75%,
+        #18529D 75%,
+        #18529D
+      );
+    background-size: 60px 60px;
+    background-position: 0 0;
+    animation: slide 4s infinite linear;
+  }
+  
+  @keyframes slide {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -120px 60px;
+    }
+  }
+
+    /* CONTENIDO */
+.contenedor-inicio {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', cursive;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 12px; /*redondear esquinas*/
+  }
+  
+  .contenedor-inicio h1 {
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  .contenedor-inicio h2 {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+  
+  .contenedor-inicio h3 {
+    font-size: 38px;
+    color: #fbc531;
+    margin: 16px 0;
+  }
+  
+    /* CONTENEDOR DE BOTONES */
+  .botones-container {
+    position: absolute;
+    bottom: 60px; /* Distancia desde la parte inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espacio entre el grupo de botones y el botón salir */
+  }
+  
+  .botones-principales {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+  }
+  
+  .boton-salir {
+    text-align: center;
+  }
+  
+  /* ICONOS SUPERIORES */
+  .icono-sonido, .icono-uv {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  
+  .icono-sonido {
+    display: block;
+    background-image: url('/assets/Iconos/audio-on.png');
+    top: 5%;
+    right: 6%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+  .icono-uv {
+    display: block;
+    background-image: url('assets/Iconos/icono-uv.png');
+    top: 5%;
+    right: 4%;
+    transform: translate(50%, -50%);
+  }
+  
+  .sonido-activado {
+    background-image: url('assets/Iconos/audio-on.png'); /* Ícono de sonido activo */
+  }
+  
+  .sonido-desactivado {
+    background-image: url('assets/Iconos/audio-off.png'); /* Ícono de sonido apagado */
+  }
+  
+  .icono-sonido:hover,
+  .icono-uv:hover {
+    opacity: 0.7;
+  }
+  
+
+    /* ESTILOS DE BOTONES */
+    button {
+    background-color: #153243;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 16px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  button:hover {
+    transform: scale(1.1);
+    background-color: #ffffff;
+    color: #153243;
+    border-color: #153243;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+
+  /* INPUTS */
+  .input-nombre {
+    padding: 8px 12px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    border: none;
+    background-color: #153243;
+    border: 2px solid white;
+    color: white;
+    margin: 10px 0;
+    width: 80%;
+  }

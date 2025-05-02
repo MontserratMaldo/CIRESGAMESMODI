@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="pantallaInicio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="contenedor-inicio">
+    <audio id="musicaFondo" autoplay>
+      <source src="/assets/Musica/musicaMenu.mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+    <h1>Universidad Veracruzana</h1>
+    <h2>Centro de Estudios de Recursos Energéticos y Sustentables</h2>
+    <h3>CIRESGAMES</h3>
+    <input type="text" placeholder="Ingresar tu nombre" class="input-nombre" />
+    <button onclick="guardarNombre()">Guardar</button>
+  </div>
+
+  <div class="botones-container">
+    <div class="botones-principales">
+        <a href="pantallaJuegosm.html">
+            <button class="boton-accion">Iniciar</button>
+        </a>
+        <a href="pantallaCreditos.html">
+            <button class="boton-accion">Créditos</button>
+        </a>
+    </div>
+    <div class="boton-salir">
+      <button class="boton-accion">Salir</button>
+    </div>
+  </div>
+
+  <div class="contenedor-iconos">
+    <a href="https://www.uv.mx/" target="_blank" class="icono-uv" rel="noreferrer"></a>
+    <div class="icono-sonido sonido-activado" id="iconoSonido"></div>
+  </div>  
+
+  <script>
+    // Función para reproducir la música de fondo
+    function reproducirMusica() {
+      const musicaFondo = document.getElementById('musicaFondo');
+      musicaFondo.play(); // Reproduce la música cuando se activa
+    }
+
+    // Llamar a la función al cargar la página tras la interacción del usuario
+    document.body.addEventListener('click', reproducirMusica); // Reproduce la música tras un clic en el body
+
+    // Cambiar el estado del icono de sonido
+    const icono = document.getElementById('iconoSonido');
+    icono.addEventListener('click', () => {
+      icono.classList.toggle('sonido-activado');
+      icono.classList.toggle('sonido-desactivado');
+      const musicaFondo = document.getElementById('musicaFondo');
+      if (musicaFondo.paused) {
+        musicaFondo.play(); // Reproduce la música si está pausada
+      } else {
+        musicaFondo.pause(); // Pausa la música si se está reproduciendo
+      }
+    });
+  </script>
+
+  <script>
+    function guardarNombre() {
+      const nombre = document.querySelector('.input-nombre').value;
+      localStorage.setItem('nombreUsuario', nombre); // Guardamos el nombre en localStorage
+    }
+  </script>
+
+</body>
+</html>
